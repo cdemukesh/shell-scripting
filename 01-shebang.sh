@@ -30,4 +30,4 @@ echo Line2
 # \n : new line
 # \t : tab space.
 
-echo -e "Line3\nLine4"
+echo -e "Line3\n\tLine4"
