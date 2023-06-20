@@ -20,3 +20,8 @@
     # * ./scriptName
 
 echo Welcome to the new project!
+
+# Printing Multiple Lines
+
+echo Line1
+echo Line2
