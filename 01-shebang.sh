@@ -19,3 +19,4 @@
     # * sh scriptName.sh
     # * ./scriptName
 
+echo Welcome to the new project!
