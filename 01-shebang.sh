@@ -12,7 +12,6 @@
 
 ## Using the SHEBANG notation, we are telling the system interpretor to run the scrupt.
 
-## She 
 
 ### How to run a linux script ?
 
