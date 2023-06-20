@@ -16,6 +16,8 @@
 
 # Cyan          36                  46
 
+
+
 # The syntax to print the colors is:
 # Eg:
 #       echo -e "\e[COL-CODEm Your Message To Be Printed. \e[0m"
@@ -28,4 +30,9 @@ ENDCOLOR="\e[0m"
 echo -e "${RED}This is some red text, ${ENDCOLOR}"
 echo -e "${GREEN}And this is some green text${ENDCOLOR}"
 
-echo -e "\e[32m I am printing Green Color \e[33m"
+echo -e "\e[31m I am printing Red Color \e[0m"
+echo -e "\e[32m I am printing Green Color \e[0m"
+echo -e "\e[33m I am printing Yellow Color \e[0m"
+echo -e "\e[34m I am printing Blue Color \e[0m"
+echo -e "\e[35m I am printing Magenta Color \e[0m"
+echo -e "\e[36m I am printing Cyan Color \e[0m"
