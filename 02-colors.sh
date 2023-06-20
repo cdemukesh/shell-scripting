@@ -32,6 +32,7 @@ echo -e "${GREEN}And this is some green text${ENDCOLOR}"
 
 echo -e "\e[31m I am printing Red Color \e[0m"
 echo -e "\e[32m I am printing Green Color \e[0m"
+echo -e "\e[46;32m This is new GREEN COLOR\e[0m"
 echo -e "\e[33m I am printing Yellow Color \e[0m"
 echo -e "\e[43;34m I am printing Blue Color \e[0m"
 echo -e "\e[35m I am printing Magenta Color \e[0m"
