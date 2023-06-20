@@ -21,4 +21,11 @@
 #       echo -e "\e[COL-CODEm Your Message To Be Printed. \e[0m"
 #       echo -e "\e[32m I am printing Green Color \e[0m"
 
+RED="\e[31m"
+GREEN="\e[32m"
+ENDCOLOR="\e[0m"
+
+echo -e "${RED}This is some red text, ${ENDCOLOR}"
+echo -e "${GREEN}And this is some green text${ENDCOLOR}"
+
 echo -e "\e[32m I am printing Green Color \e[33m"
