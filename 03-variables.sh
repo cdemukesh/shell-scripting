@@ -16,4 +16,4 @@ c=30
 
 # Syntax : $variable : $ is going to print the value of the variable.
 echo $a
-echo -e "\e[33m Value of the variable a is: ${a}\e[0m"
+echo -e "\e[33mValue of the variable a is: ${a}\e[0m"
