@@ -25,3 +25,9 @@ echo Welcome to the new project!
 
 echo Line1
 echo Line2
+
+# In bash, we have some escape sequence characters, using that we can add some power to the code.
+# \n : new line
+# \t : tab space.
+
+echo Line3\nLine4
