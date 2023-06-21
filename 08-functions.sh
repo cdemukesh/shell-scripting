@@ -8,7 +8,7 @@ sample(){
     echo "I am a sample function with name sample"
     echo "I am executing the sample function"
     echo "Sameple function is completed"
-}
+    }
 
 # Calling the sample function
 
