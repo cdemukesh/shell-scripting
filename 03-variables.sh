@@ -20,4 +20,4 @@ echo -e "\e[33mValue of the variable a is: ${a}\e[0m"
 
 echo -e "\e[32mValue of 0: \e[0m$0"
 echo -e "\e[32mValue of 1: \e[0m$1"
-echo -e "\e[32mValue of $\?: \e[0m$?"
+echo -e "\n\e[32mValue of $\?: \e[0m$?"
