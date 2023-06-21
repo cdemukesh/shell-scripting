@@ -16,6 +16,6 @@ ls -lrt &> op.txt   # Rearrects botn standardout and standardErrors
 ls -lrt 2> op.txt   # Redirects only the standara
 
 # Each and every action in Linux will have an exit which determines the status of the completion,
-# Range of exit codes is 0 to 255
+# Range of exit codes is 0 to 255 
 #   0       : Successful,Normal
 #   1-255   : Unsuccessful, Abnormal, Failure, Partial Success
