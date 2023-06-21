@@ -10,3 +10,10 @@ echo "Parameter 2: $2"
 echo "Last execution?: $?"
 echo "*: $*"
 echo "@: $@"
+
+echo -e "Print\n"
+echo $*     # $* is going to print the used variables
+echo $@     # $@ is going to print the used variables
+echo $$     # $$ is going to print the PID of the current process
+echo $#     # $# is going to pring the number of arguments
+echo $?     # $? is going to print the exit code of the last command
