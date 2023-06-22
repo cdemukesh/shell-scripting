@@ -25,3 +25,5 @@ case $ACTION in
 		echo -e "\e[36mPlease choose start|stop|restart\e[0m"
 	;;
 esac
+
+# End of script
