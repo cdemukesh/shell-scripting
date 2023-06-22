@@ -38,6 +38,11 @@ rm -rf ${COMPONENT}-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
+echo -n "Starting ${COMPONENT} service : "
+systemctl enable nginx
+systemctl start nginx
+stat $?
+
 # cd /usr/share/nginx/html
 # rm -rf *
 # unzip /tmp/frontend.zip
