@@ -9,7 +9,13 @@ if [ $ID -ne 0 ] ; then
 
 fi
 echo "Installing Nginx:"
-yum install nginx -y    &>> /tmp/${COMPONENT}.log
+yum install nginx -y    &>> "/tmp/${COMPONENT}.log"
+
+if [ $? -eq 0 ] ; then
+    echo -e "\e[32mSUCCESS\e[0m"
+elif
+    echo -e "\e[31mFAILURE\e[0m"
+fi
 
 # The frontend is the service in RobotShop to serve the web content over Nginx.
 
