@@ -1,6 +1,7 @@
 #!/bin/bash
 
 COMPONENT=frontend
+LOGFILE="/tmp/${COMPONENT}.log"
 
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then
@@ -8,34 +9,34 @@ if [ $ID -ne 0 ] ; then
     exit 1
 fi
 
-echo -n "Installing Nginx : "
-yum install nginx -y    &>> "/tmp/${COMPONENT}.log"
+stat() {
+    if [ $1 -eq 0 ] ; then
+        echo -e "\e[32mSUCCESS\e[0m"
+    else
+        echo -e "\e[31mFAILURE\e[0m"
+    fi
+}
 
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32mSUCCESS\e[0m"
-else
-    echo -e "\e[31mFAILURE\e[0m"
-fi
+echo -n "Installing Nginx : "
+yum install nginx -y    &>> $LOGFILE
+stat $?
 
 echo -n "Downloading the frontend component : "
-curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32mSUCCESS\e[0m"
-else
-    echo -e "\e[31mFAILURE\e[0m"
-fi
+curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
+stat $?
 
 echo -n "Performing Cleanup : "
-
 cd /usr/share/nginx/html
-rm -rf *    &>> "/tmp/${COMPONENT}.log"
+rm -rf *    &>> $LOGFILE
+stat $?
 
-if [ $? -eq 0 ] ; then
-    echo -e "\e[32mSUCCESS\e[0m"
-else
-    echo -e "\e[31mFAILURE\e[0m"
-fi
+echo -n "Extracting ${COMPONENT} : "
+unzip /tmp/${COMPONENT}.zip         &>> $LOGFILE
+mv ${COMPONENT}-main/* .            &>> $LOGFILE
+mv static/* .                   &>> $LOGFILE
+rm -rf ${COMPONENT}-main README.md
+mv localhost.conf /etc/nginx/default.d/roboshop.conf
+stat $?
 
 # cd /usr/share/nginx/html
 # rm -rf *
