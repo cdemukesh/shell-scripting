@@ -31,7 +31,7 @@ stat $?
 
 echo -n "Starting ${COMPONENT} : "
 echo -n "Mukesh 1: " >> $LOGFILE
-systemctl daemon-reload mongod      #&>> $LOGFILE
+systemctl daemon-reload      #&>> $LOGFILE
 #systemctl daemon-reload mongod    &>> $LOGFILE
 systemctl enable mongod     &>> $LOGFILE
 systemctl restart mongod      &>> $LOGFILE
