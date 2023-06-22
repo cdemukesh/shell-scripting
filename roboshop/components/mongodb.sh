@@ -46,8 +46,8 @@ stat $?
 
 echo -n "Injecting the schedma : "
 cd ${COMPONENT}-main
-mongo < catalogue.js
-mongo < users.js
+mongo < catalogue.js    &>> $LOGFILE
+mongo < users.js        &>> $LOGFILE
 
 
 # 1. Setup MongoDB repos.
