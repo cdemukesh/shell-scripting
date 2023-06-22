@@ -48,7 +48,7 @@ echo -n "Injecting the schedma : "
 cd ${COMPONENT}-main
 mongo < catalogue.js    &>> $LOGFILE
 mongo < users.js        &>> $LOGFILE
-
+stat $?
 
 # 1. Setup MongoDB repos.
 
