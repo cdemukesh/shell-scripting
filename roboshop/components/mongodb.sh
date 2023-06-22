@@ -21,6 +21,11 @@ echo -n "Configuring the ${COMPONENT} repo : "
 curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/stans-robot-project/mongodb/main/mongo.repo
 stat $?
 
+echo -n "Installing ${COMPONENT} : "
+yum install -y mongodb-org  &>> $LOGFILE
+stat $?
+
+
 # 1. Setup MongoDB repos.
 
 # ```bash
