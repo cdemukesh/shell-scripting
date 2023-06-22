@@ -8,8 +8,8 @@ if [ $ID -ne 0 ] ; then
     exit 1
 
 fi
-echo -n "Installing Nginx:"
-yum install nginx -y    &>> "/tmp/${COMPONENT}.log"
+echo -n "Installing Nginx: "
+yum install nginmmx -y    &>> "/tmp/${COMPONENT}.log"
 
 if [ $? -eq 0 ] ; then
     echo -e "\e[32mSUCCESS\e[0m"
