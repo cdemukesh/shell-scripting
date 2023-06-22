@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ID=${id -u}
+ID=$(id -u)
 if [ $ID -ne 0 ] ; then
     echo -e "\e[34m Please run with root user or sudo privilege.\e[0m"
     exit 1
