@@ -26,6 +26,25 @@ else
     echo -e "\e[31mFAILURE\e[0m"
 fi
 
+echo -n "Performing Cleanup : "
+
+cd /usr/share/nginx/html
+rm -rf *    &>> "/tmp/${COMPONENT}.log"
+
+if [ $? -eq 0 ] ; then
+    echo -e "\e[32mSUCCESS\e[0m"
+else
+    echo -e "\e[31mFAILURE\e[0m"
+fi
+
+# cd /usr/share/nginx/html
+# rm -rf *
+# unzip /tmp/frontend.zip
+# mv frontend-main/* .
+# mv static/* .
+# rm -rf frontend-main README.md
+# mv localhost.conf /etc/nginx/default.d/roboshop.conf
+
 # The frontend is the service in RobotShop to serve the web content over Nginx.
 
 # Install Nginx.
