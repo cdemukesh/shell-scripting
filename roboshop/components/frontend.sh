@@ -1,5 +1,7 @@
 #!/bin/bash
 
+COMPONENT=frontend
+
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then
     echo -e "\e[31mPlease run with root user or sudo privilege.\e[0m"
@@ -7,7 +9,7 @@ if [ $ID -ne 0 ] ; then
 
 fi
 echo "Installing Nginx:"
-yum install nginx -y
+yum install nginx -y    &>> /tmp/${COMPONENT}.log
 
 # The frontend is the service in RobotShop to serve the web content over Nginx.
 
