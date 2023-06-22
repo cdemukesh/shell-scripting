@@ -2,7 +2,7 @@
 
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then
-    echo -e "\e[34m Please run with root user or sudo privilege.\e[0m"
+    echo -e "\e[31m Please run with root user or sudo privilege.\e[0m"
     exit 1
 
 fi
