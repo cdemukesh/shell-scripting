@@ -19,7 +19,7 @@ stat() {
 
 echo -e "\n*********************\e[32m ${COMPONENT^^} Installation has started \e[0m*********************\n"
 echo -n "Configuring the ${COMPONENT} repo : "
-curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -    &>> $LOGFILE
 stat $?
 
 # echo -n "Installing ${COMPONENT} : "
