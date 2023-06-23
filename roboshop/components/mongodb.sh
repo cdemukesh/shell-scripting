@@ -17,7 +17,7 @@ stat() {
     fi
 }
 
-echo -e "\n*********************\e[32m ${COMPONENT} Installation has started \e[0m*********************" 'a-z' 'A-Z'
+echo -e "\n*********************\e[32m ${COMPONENT} Installation has started \e[0m*********************\n" | tr 'a-z' 'A-Z'
 <<MUKESH
 echo -n "Configuring the ${COMPONENT} repo : "
 curl -s -o /etc/yum.repos.d/${COMPONENT}.repo https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mongo.repo
@@ -55,7 +55,7 @@ mongo < users.js        &>> $LOGFILE
 stat $?
 
 MUKESH
-echo -e "\n*********************\e[32m ${COMPONENT} Installation is complete \e[0m*********************" 'a-z' 'A-Z'
+echo -e "\n*********************\e[32m ${COMPONENT} Installation is complete \e[0m*********************" | tr 'a-z' 'A-Z'
 # 1. Setup MongoDB repos.
 
 # ```bash
