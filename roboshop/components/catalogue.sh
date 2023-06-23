@@ -43,6 +43,8 @@ cd /home/roboshop
 unzip -o /tmp/catalogue.zip &>> $LOGFILE
 stat $?
 
+echo -n "Modifying the ownership : "
+chown -R $APPUSER:$APPUSER /home/$APPUSER/
 
 #$ mv catalogue-main catalogue
 #$ cd /home/roboshop/catalogue
