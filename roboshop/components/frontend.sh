@@ -17,6 +17,7 @@ stat() {
     fi
 }
 
+echo -e "\n*********************\e[32m ${COMPONENT^^} Installation has started \e[0m*********************\n"
 echo -n "Installing Nginx : "
 yum install nginx -y    &>> $LOGFILE
 stat $?
@@ -42,6 +43,8 @@ echo -n "Starting ${COMPONENT} service : "
 systemctl enable nginx  &>> $LOGFILE
 systemctl start nginx   &>> $LOGFILE
 stat $?
+
+echo -e "\n*********************\e[32m ${COMPONENT^^} Installation is complete \e[0m*********************" 
 
 # cd /usr/share/nginx/html
 # rm -rf *
