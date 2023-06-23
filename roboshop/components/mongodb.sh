@@ -17,7 +17,7 @@ stat() {
     fi
 }
 
-echo -e "*********************\e[32m ${COMPONENT} Installation has started \e[0m*********************"
+echo -e "\n*********************\e[32m ${COMPONENT} Installation has started \e[0m*********************" 'a-z' 'A-Z'
 
 echo -n "Configuring the ${COMPONENT} repo : "
 curl -s -o /etc/yum.repos.d/${COMPONENT}.repo https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mongo.repo
@@ -54,7 +54,7 @@ mongo < catalogue.js    &>> $LOGFILE
 mongo < users.js        &>> $LOGFILE
 stat $?
 
-echo -e "*********************\e[32m ${COMPONENT} Installation is complete \e[0m*********************"
+echo -e "\n*********************\e[32m ${COMPONENT} Installation is complete \e[0m*********************" 'a-z' 'A-Z'
 # 1. Setup MongoDB repos.
 
 # ```bash
