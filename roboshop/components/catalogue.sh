@@ -2,6 +2,7 @@
 
 COMPONENT=catalogue
 LOGFILE="/tmp/${COMPONENT}.log"
+APPUSER="roboshop"
 
 ID=$(id -u)
 if [ $ID -ne 0 ] ; then
@@ -22,11 +23,13 @@ echo -n "Configuring the ${COMPONENT} repo : "
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -    &>> $LOGFILE
 stat $?
 
-echo -n "Installing NodeJS: "
+echo -n "Installing NodeJS : "
 yum install -y nodejs  &>> $LOGFILE
 stat $?
 
-echo -n "Creating the Service Account : "
-useradd roboshop
-stat $?
-
+id ${APPUSER}
+if [ $? -ne 0 ] ; then
+    echo -n "Creating the Service Account : "
+    useradd roboshop
+    stat $?
+fi
