@@ -54,3 +54,15 @@ cd /home/$APPUSER/${COMPONENT}
 npm install &>> $LOGFILE
 stat $? 
 
+echo -n "Updating the $COMPONENT systemd file : "
+sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/${COMPONENT}/systemd.service
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+stat $?
+
+echo -n "Starting $COMPONENT service : "
+systemctl daemon-reload &>> $LOGFILE
+systemctl start catalogue   &>> $LOGFILE
+systemctl enable catalogue  &>> $LOGFILE
+stat $?
+
+echo -e "\n*********************\e[32m ${COMPONENT^^} Installation is complete \e[0m*********************" 
