@@ -45,6 +45,7 @@ stat $?
 
 echo -n "Modifying the ownership : "
 chown -R $APPUSER:$APPUSER /home/$APPUSER/
+stat $?
 
 #$ mv catalogue-main catalogue
 #$ cd /home/roboshop/catalogue
