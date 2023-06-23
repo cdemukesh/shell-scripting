@@ -61,8 +61,8 @@ stat $?
 
 echo -n "Starting $COMPONENT service : "
 systemctl daemon-reload &>> $LOGFILE
-systemctl start catalogue   &>> $LOGFILE
-systemctl enable catalogue  &>> $LOGFILE
+systemctl start $COMPONENT   &>> $LOGFILE
+systemctl enable $COMPONENT  &>> $LOGFILE
 stat $?
 
 echo -e "\n*********************\e[32m ${COMPONENT^^} Installation is complete \e[0m*********************" 
