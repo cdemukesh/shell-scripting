@@ -17,13 +17,13 @@ stat() {
     fi
 }
 
-echo -e "\n*********************\e[32m ${COMPONENT^^} Installation has started \e[0m*********************\n"
+echo -e "\n*********************\e[35m ${COMPONENT^^} Installation has started \e[0m*********************\n"
 echo -n "Configuring the ${COMPONENT} repo : "
 curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -    &>> $LOGFILE
 stat $?
 
-# echo -n "Installing ${COMPONENT} : "
-# yum install -y nodejs  &>> $LOGFILE
-# stat $?
+echo -n "Installing NodeJS: "
+yum install -y nodejs  &>> $LOGFILE
+stat $?
 
 

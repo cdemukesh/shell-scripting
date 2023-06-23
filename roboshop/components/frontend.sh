@@ -17,7 +17,7 @@ stat() {
     fi
 }
 
-echo -e "\n*********************\e[32m ${COMPONENT^^} Installation has started \e[0m*********************\n"
+echo -e "\n*********************\e[35m ${COMPONENT^^} Installation has started \e[0m*********************\n"
 echo -n "Installing Nginx : "
 yum install nginx -y    &>> $LOGFILE
 stat $?

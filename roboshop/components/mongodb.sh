@@ -17,7 +17,7 @@ stat() {
     fi
 }
 
-echo -e "\n*********************\e[32m ${COMPONENT^^} Installation has started \e[0m*********************\n"
+echo -e "\n*********************\e[35m ${COMPONENT^^} Installation has started \e[0m*********************\n"
 echo -n "Configuring the ${COMPONENT} repo : "
 curl -s -o /etc/yum.repos.d/${COMPONENT}.repo https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mongo.repo
 stat $?
