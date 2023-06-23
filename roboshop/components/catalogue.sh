@@ -30,24 +30,26 @@ stat $?
 id ${APPUSER}   &>> $LOGFILE
 if [ $? -ne 0 ] ; then
     echo -n "Creating the Service Account : "
-    useradd roboshop
+    useradd robos$APPUSER
     stat $?
 fi
 
 echo -n "Downloading the ${COMPONENT} : "
-curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"    &>> $LOGFILE
+curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip"    &>> $LOGFILE
 stat $?
 
 echo -n "Copying the $COMPONENT to $APPUSER home directory : "
-cd /home/roboshop
-unzip -o /tmp/catalogue.zip &>> $LOGFILE
+cd /home/$APPUSER
+unzip -o /tmp/${COMPONENT}.zip &>> $LOGFILE
 stat $?
 
 echo -n "Modifying the ownership : "
-mv catalogue-main catalogue
+mv ${COMPONENT}-main ${COMPONENT}
 chown -R $APPUSER:$APPUSER /home/$APPUSER/
 stat $?
 
-#$ 
-#$ cd /home/roboshop/catalogue
-#$ npm install
+echo -n "Generating npm $COMPONENT artifacts : "
+cd /home/$APPUSER/${COMPONENT}
+npm install &>> $LOGFILE
+stat $? 
+
