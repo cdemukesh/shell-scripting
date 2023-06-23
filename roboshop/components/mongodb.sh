@@ -17,6 +17,8 @@ stat() {
     fi
 }
 
+echo -e "*********************\e[32m ${COMPONENT} Installation has started \e[0m*********************"
+
 echo -n "Configuring the ${COMPONENT} repo : "
 curl -s -o /etc/yum.repos.d/${COMPONENT}.repo https://raw.githubusercontent.com/stans-robot-project/${COMPONENT}/main/mongo.repo
 stat $?
@@ -30,14 +32,12 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 stat $?
 
 echo -n "Starting ${COMPONENT} : "
-echo -n "Mukesh 1: " >> $LOGFILE
 systemctl daemon-reload      #&>> $LOGFILE
 #systemctl daemon-reload mongod    &>> $LOGFILE
 systemctl enable mongod     &>> $LOGFILE
 systemctl restart mongod      &>> $LOGFILE
 stat $?
 
-echo -n "Mukesh 2: " >> $LOGFILE
 
 echo -n "Downloading the ${COMPONENT} schema : "
 curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip"
@@ -54,6 +54,7 @@ mongo < catalogue.js    &>> $LOGFILE
 mongo < users.js        &>> $LOGFILE
 stat $?
 
+echo -e "*********************\e[32m ${COMPONENT} Installation is complete \e[0m*********************"
 # 1. Setup MongoDB repos.
 
 # ```bash
