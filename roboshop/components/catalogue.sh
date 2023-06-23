@@ -44,9 +44,10 @@ unzip -o /tmp/catalogue.zip &>> $LOGFILE
 stat $?
 
 echo -n "Modifying the ownership : "
+mv catalogue-main catalogue
 chown -R $APPUSER:$APPUSER /home/$APPUSER/
 stat $?
 
-#$ mv catalogue-main catalogue
+#$ 
 #$ cd /home/roboshop/catalogue
 #$ npm install
