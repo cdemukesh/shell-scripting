@@ -39,37 +39,17 @@ rm -rf ${COMPONENT}-main README.md
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 stat $?
 
+echo -n "Updating the Backend component reverseproxy details : "
+for component in catalogue ; do
+    sed -i -e '\$component\s\localhost\$component.roboshop.internal\' /etc/nginx/default.d/roboshop.conf
+done
+stat $?
+
 echo -n "Starting ${COMPONENT} service : "
+systemctl daemon-reload &>> $LOGFILE
 systemctl enable nginx  &>> $LOGFILE
-systemctl start nginx   &>> $LOGFILE
+systemctl restart nginx   &>> $LOGFILE
 stat $?
 
 echo -e "\n*********************\e[32m ${COMPONENT^^} Installation is complete \e[0m*********************" 
 
-# cd /usr/share/nginx/html
-# rm -rf *
-# unzip /tmp/frontend.zip
-# mv frontend-main/* .
-# mv static/* .
-# rm -rf frontend-main README.md
-# mv localhost.conf /etc/nginx/default.d/roboshop.conf
-
-# The frontend is the service in RobotShop to serve the web content over Nginx.
-
-# Install Nginx.
-
-# ```
-# # yum install nginx -y
-# # systemctl enable nginx
-# # systemctl start nginx
-
-# ```
-
-# Let's download the HTDOCS content and deploy it under the Nginx path.
-
-# ```
-# # curl -s -L -o /tmp/frontend.zip "https://github.com/stans-robot-project/frontend/archive/main.zip"
-
-# ```
-
-# Deploy in Nginx Default Location.
