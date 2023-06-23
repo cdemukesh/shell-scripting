@@ -27,7 +27,7 @@ echo -n "Installing NodeJS : "
 yum install -y nodejs  &>> $LOGFILE
 stat $?
 
-id ${APPUSER}
+id ${APPUSER}   &>> $LOGFILE
 if [ $? -ne 0 ] ; then
     echo -n "Creating the Service Account : "
     useradd roboshop
