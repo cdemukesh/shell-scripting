@@ -33,3 +33,17 @@ if [ $? -ne 0 ] ; then
     useradd roboshop
     stat $?
 fi
+
+echo -n "Downloading the ${COMPONENT} : "
+curl -s -L -o /tmp/catalogue.zip "https://github.com/stans-robot-project/catalogue/archive/main.zip"    &>> $LOGFILE
+stat $?
+
+echo -n "Copying the $COMPONENT to $APPUSER home directory : "
+cd /home/roboshop
+unzip -o /tmp/catalogue.zip &>> $LOGFILE
+stat $?
+
+
+#$ mv catalogue-main catalogue
+#$ cd /home/roboshop/catalogue
+#$ npm install
