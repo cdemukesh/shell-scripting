@@ -39,9 +39,14 @@ if [ $? -eq 0 ] ; then
     echo "UNINSTALL PLUGIN validate_password;" | mysql -uroot -pRoboShop@1    &>> $LOGFILE
     stat $?
 fi
-# echo -n "Performing password reset of root user : "
-# echo "ALTER user 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -p${DEFAULT_ROOT_PASSWORD}  &>> $LOGFILE
-# stat $?
 
+echo -n "Downloading the ${COMPONENT} : "
+curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/stans-robot-project/${COMPONENT}/archive/main.zip"    &>> $LOGFILE
+stat $?
 
-# grep "temporary password" mysqld.log  | awk -F ": " '{print $2}'
+echo -n "Extracting the ${COMPONENT} schema : "
+cd /tmp
+unzip -o ${COMPONENT}.zip
+cd ${COMPONENT}-main
+mysql -u root -pRoboShop@1 <shipping.sql
+stat $?
