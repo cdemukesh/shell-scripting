@@ -1,8 +1,8 @@
 #!/bin/bash
-source components/common.sh
+
 
 COMPONENT=catalogue
-
+source components/common.sh
 
 echo -e "\n*********************\e[35m ${COMPONENT^^} Installation has started \e[0m*********************\n"
 echo -n "Configuring the ${COMPONENT} repo : "

@@ -1,8 +1,8 @@
 #!/bin/bash
-source components/common.sh
+
 
 COMPONENT=redis
-
+source components/common.sh
 
 echo -e "\n*********************\e[35m ${COMPONENT^^} Installation has started \e[0m*********************\n"
 
