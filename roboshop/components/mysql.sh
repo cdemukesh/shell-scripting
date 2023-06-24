@@ -21,5 +21,4 @@ systemctl restart mysqld      &>> $LOGFILE
 stat $?
 
 
-# curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/stans-robot-project/mysql/main/mysql.repo
-# yum install mysql-community-server -y
+# grep "temporary password" mysqld.log  | awk -F ": " '{print $2}'
