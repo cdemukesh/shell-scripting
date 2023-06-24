@@ -15,7 +15,6 @@ stat $?
 
 echo -n "Starting ${COMPONENT} : "
 systemctl daemon-reload      #&>> $LOGFILE
-#systemctl daemon-reload mongod    &>> $LOGFILE
 systemctl enable mysqld     &>> $LOGFILE
 systemctl restart mysqld      &>> $LOGFILE
 stat $?
