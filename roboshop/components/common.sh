@@ -118,3 +118,23 @@ JAVA() {
 
     CONFIGURE_SVC           # Configuring the service
 }
+
+
+PYTHON() {
+
+    echo -e "\n*********************\e[35m ${COMPONENT^^} Installation has started \e[0m*********************\n"
+    echo -n "Installing Python and its dependencies : "
+    yum install python36 gcc python3-devel -y  &>> $LOGFILE
+    stat $?
+
+    CREATE_USER             # calling CREATE_USER function to create the roboshop user account
+
+    DOWNLOAD_AND_EXTRACT    # calling DOWNLOAD_AND_EXTRACT function to download the content
+
+    echo -n "Installing $COMPONENT: "
+    cd /home/$APPUSER/$COMPONENT/ 
+    pip3 install -r requirements.txt    &>> $LOGFILE
+    stat $?
+
+    
+}
