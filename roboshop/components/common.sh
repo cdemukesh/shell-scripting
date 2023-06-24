@@ -69,7 +69,7 @@ CONFIGURE_SVC() {
     systemctl enable $COMPONENT  &>> $LOGFILE
     stat $?
 
-    echo -e "\n*********************\e[32m ${COMPONENT^^} Installation is complete \e[0m*********************" 
+    echo -e "\n*********************\e[35m ${COMPONENT^^} Installation is complete \e[0m*********************" 
 
 }
 NODEJS() {
