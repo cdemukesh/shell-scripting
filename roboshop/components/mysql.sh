@@ -25,7 +25,7 @@ DEFAULT_ROOT_PASSWORD=$(grep "temporary password" mysqld.log  | awk -F ": " '{pr
 stat $?
 
 # I want this to be executed only if the default password reset was not done.
-echo "exit" | mysql -uroot -pRoboShop@1    &>> $LOGFILE
+echo "show databases;" | mysql -uroot -pRoboShop@1    &>> $LOGFILE     # use "exit" or "show databases;" with a ';'
 if [ $? -ne 0 ] ; then
     echo -n "Performing password reset of root user : "
     echo "ALTER user 'root'@'localhost' IDENTIFIED BY 'RoboShop@1';" | mysql --connect-expired-password -p${DEFAULT_ROOT_PASSWORD}  &>> $LOGFILE
