@@ -21,7 +21,7 @@ systemctl restart mysqld      &>> $LOGFILE
 stat $?
 
 echo -n "Fetching default root password : "
-DEFAULT_ROOT_PASSWORD=$(grep "temporary password" mysqld.log  | awk -F ": " '{print $2}')
+DEFAULT_ROOT_PASSWORD=$(grep "temporary password" /var/log/mysqld.log  | awk -F ": " '{print $2}')
 stat $?
 
 # I want this to be executed only if the default password reset was not done.
@@ -49,7 +49,7 @@ cd /tmp
 unzip -o ${COMPONENT}.zip   &>> $LOGFILE
 stat $?
 
-echo -n "Injecting the schedma : "
+echo -n "Injecting the ${COMPONENT} schema : "
 cd ${COMPONENT}-main
 mysql -u root -pRoboShop@1 <shipping.sql    &>> $LOGFILE
 stat $?
