@@ -59,7 +59,7 @@ NPM_INSTALL() {
 CONFIGURE_SVC() {
 
     echo -n "Updating the $COMPONENT systemd file : "
-    sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/${COMPONENT}/systemd.service
+    sed -i -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue.roboshop.internal/' -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/' /home/$APPUSER/${COMPONENT}/systemd.service
     mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
     stat $?
 
@@ -88,6 +88,32 @@ NODEJS() {
     DOWNLOAD_AND_EXTRACT    # calling DOWNLOAD_AND_EXTRACT function to download the content
 
     NPM_INSTALL             # calling NPM_INSTALL to create artifact
+
+    CONFIGURE_SVC           # Configuring the service
+}
+
+MVN_PACKAGE() {
+
+    echo -n "Preparing $COMPONENT artifacts : "
+    cd /home/$APPUSER/${COMPONENT}
+    mvn clean package                           &>> $LOGFILE
+    mv target/shipping-1.0.jar shipping.jar
+    stat $?
+
+}
+
+JAVA() {
+
+    echo -e "\n*********************\e[35m ${COMPONENT^^} Installation has started \e[0m*********************\n"
+    echo -n "Installing Maven : "
+    yum install -y maven  &>> $LOGFILE
+    stat $?
+
+    CREATE_USER             # calling CREATE_USER function to create the roboshop user account
+
+    DOWNLOAD_AND_EXTRACT    # calling DOWNLOAD_AND_EXTRACT function to download the content
+
+    MVN_PACKAGE             # calling MVN_PACKAGE to create the build
 
     CONFIGURE_SVC           # Configuring the service
 }
