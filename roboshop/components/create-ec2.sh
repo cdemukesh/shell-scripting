@@ -13,4 +13,4 @@ echo -e "************ Launching Server ************"
 aws ec2 run-instances --image-id ${AMI_ID} \
     --security-group-ids $SG_ID \
     --instance-type t2.micro \
-    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"| jq .
+    --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"| jq ".Instances[].PrivateIpAddress"
