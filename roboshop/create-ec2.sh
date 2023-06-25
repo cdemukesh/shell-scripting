@@ -8,6 +8,7 @@ HOSTED_ZONE_ID="Z03679992SV9650RBIQI8"
 if [ -z $COMPONENT ] ; then
     echo -e "\e[31m COMPONENT NAME IS NEEDED \e[0m"
     echo -e "\e[35m Ex Usage: \n\t\$ bash create-ec2.sh componentName \e[0m"
+    echo -e "\e[35m\t\$ bash create-ec2.sh all \e[0m"
     exit 1
 fi
 
