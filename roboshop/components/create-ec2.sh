@@ -1,7 +1,14 @@
 #!/bin/bash
 
 #AMI_ID="ami-0c1d144c8fdd8d690"
+
 COMPONENT=$1
+
+if [ -z $COMPONENT ] ; then
+    echo -e "\e[31m COMPONENT NAME IS NEEDED \e[0m"
+    echo -e "\e[35m Ex Usage: bash create-ec2.sh componentName \e[0m"
+    exit 1
+fi
 
 AMI_ID=$(aws ec2 describe-images  --filters "Name=name, Values=DevOps-LabImage-CentOS7" | jq ".Images[].ImageId" | awk -F "\"" '{print $2}')
 SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-allow-all | jq ".SecurityGroups[].GroupId" | sed -e 's/"//g')
