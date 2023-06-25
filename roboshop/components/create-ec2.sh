@@ -6,7 +6,7 @@ COMPONENT=$1
 
 if [ -z $COMPONENT ] ; then
     echo -e "\e[31m COMPONENT NAME IS NEEDED \e[0m"
-    echo -e "\e[35m Ex Usage: bash create-ec2.sh componentName \e[0m"
+    echo -e "\e[35m Ex Usage: \n\t\t\$bash create-ec2.sh componentName \e[0m"
     exit 1
 fi
 
