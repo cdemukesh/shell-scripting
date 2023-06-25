@@ -11,14 +11,15 @@ if [ -z $COMPONENT ] ; then
     exit 1
 fi
 
+AMI_ID=$(aws ec2 describe-images  --filters "Name=name, Values=DevOps-LabImage-CentOS7" | jq ".Images[].ImageId" | awk -F "\"" '{print $2}')
+SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-allow-all | jq ".SecurityGroups[].GroupId" | sed -e 's/"//g')
+
 echo -e "AMI ID used to launch the EC2 instance is : \e[35m$AMI_ID\e[0m"
 echo -e "Security Group ID used to launch the EC2 instance is : \e[35m$SG_ID\e[0m"
 
 create_ec2() {
 
-        AMI_ID=$(aws ec2 describe-images  --filters "Name=name, Values=DevOps-LabImage-CentOS7" | jq ".Images[].ImageId" | awk -F "\"" '{print $2}')
-        SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-allow-all | jq ".SecurityGroups[].GroupId" | sed -e 's/"//g')
-
+        
 
         echo -e "\e[36m\n************ Launching $COMPONENT Server ************\e[0m"
         IP_ADDRESS=$(aws ec2 run-instances --image-id ${AMI_ID} \
