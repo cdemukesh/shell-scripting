@@ -18,6 +18,14 @@ SG_ID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=b54-al
 echo -e "AMI ID used to launch the EC2 instance is : \e[35m$AMI_ID\e[0m"
 echo -e "Security Group ID used to launch the EC2 instance is : \e[35m$SG_ID\e[0m"
 
+# vpc-0d76e134047befa02
+
+# COMMAND TO CREATE PRIVATE HOSTED ZONE
+# aws route53 create-hosted-zone --name robo.internal \
+#   --hosted-zone-config Comment='Testing using CLI',PrivateZone=true \
+#   --vpc VPCRegion='us-east-1',VPCId='vpc-0d76e134047befa02' \
+#   --caller-reference '2023-06-23'
+
 create_ec2() {
 
         
