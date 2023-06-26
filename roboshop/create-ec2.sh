@@ -6,7 +6,7 @@ COMPONENT=$1
 ENV=$2
 HOSTED_ZONE_ID="Z03679992SV9650RBIQI8"
 
-if [ -z $COMPONENT ] ; then
+if [ -z $COMPONENT ] || [ -z $ENV ] ; then
     echo -e "\e[31m COMPONENT NAME AND ENV IS NEEDED \e[0m"
     echo -e "\e[35m Ex Usage: \n\t\$ bash create-ec2.sh componentName envName\e[0m"
     echo -e "\e[35m\t\$ bash create-ec2.sh all \e[0m"
