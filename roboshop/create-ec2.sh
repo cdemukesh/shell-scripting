@@ -35,10 +35,10 @@ create_ec2() {
         IP_ADDRESS=$(aws ec2 run-instances --image-id ${AMI_ID} \
             --security-group-ids $SG_ID \
             --instance-type t2.micro \
-            --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}]"| jq ".Instances[].PrivateIpAddress" | sed -e 's/"//g')
+            --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}-${ENV}}]"| jq ".Instances[].PrivateIpAddress" | sed -e 's/"//g')
 
         echo -e "\e[36m************ Launching $COMPONENT-$ENV Server Completed ************\e[0m"
-        echo -e "Private IP Address of $COMPONENT is : \e[35m$IP_ADDRESS\e[0m"
+        echo -e "Private IP Address of $COMPONENT-$ENV is : \e[35m$IP_ADDRESS\e[0m"
 
         echo -e "\e[36mCreating DNS Record for the $COMPONENT-$ENV : \e[0m"
         sed -e "s/COMPONENT/${COMPONENT}-${ENV}/" -e "s/IPADDRESS/${IP_ADDRESS}/" route53.json > /tmp/record.json
