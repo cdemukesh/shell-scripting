@@ -1,28 +1,33 @@
 # shell-scripting
-This is a repository to learn and automate the project using bash scripting
+This is a repository to learn and automate the project using the bash scripting.
+
+Each and every repository will have a README.md file to describe what the repository us.
+Ensure you maintain a good and descriptive readme.md file to facilitate others contribute to this repository.
 
 
-Each and every repository will have a README.md file to describe what the respository is.
+### Git is a version control system and using this we can save our code and version control it.
 
-Ensure to maintain a good and descriptive README.md file to facilitate other to contribute to this repository.
-
-### GIT is a version control system and using this we can save our code and version control it.
-
-### GIT a local version control system.
+### git a  local version control system 
 
 ### GitHub is a remote central version control system.
 
-### Common GIT commands:
+### Common Git commands:
 
-...
+```
+$ git clone repoURL.git                         ; clones or download the repository from GitHUb
+$ git add fileName  or   git add .              ; git will start tracking all the changes that you made 
+$ git commit -m "Brief message of your changes" ; commit means, you're telling git to COMMIT/SAVE it ; you can only push the changes that are commited.
+$ git push                                      ; pushes the changes that you've made to gitHub 
+$ git pull                                      ; be in the folder repository, this will pull all the changes
+```
 
-$ git clone repoURL.git                         ; clones or downloads the repository from GitHub
+### How to authenticate from your local to GitHub ?
 
-$ git add fileName or git add .                 ; git will start tracking all the changes that you made.
+```
+1) Github authentication works based on PAT. ( Personal Acccess Token )
+2) your profile on github ---> settings ---> Developer Settings  ----> Generate Classic PAT 
+3) When you do a git push, git prompts you to enter the PAT and that's it bingo. You're authenticated.
 
-$ git commit -m "Brief message of your changes" ; commit means, you're telling git to COMMIT/SAVE the changes.
+PS : PAT is sensitive and is not supposed to be shared with anyone.
 
-$ git push                                      ; pushes the changes that you've made to GitHub
-
-$ git pull                                      ; pull all the changes in the current folder.
-...
+```
